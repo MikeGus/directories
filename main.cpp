@@ -1,8 +1,6 @@
 #include <iostream>
 #include <dirent.h>
-#include <climits>
 #include <string>
-#include <cstring>
 #include <list>
 #include <sys/stat.h>
 
@@ -28,10 +26,9 @@ int show_directory_tree(const char* initial_path) {
 
     std::list<Directory_state> stack;
     struct stat statbuf;
-
     struct dirent* dirp;
-    Directory_state state;
 
+    Directory_state state;
     state.dp = nullptr;
     state.path = initial_path;
 
@@ -49,8 +46,6 @@ int show_directory_tree(const char* initial_path) {
     }
 
     print_filename(0, state.path);
-
-//    can't open dir
 
     stack.push_back(state);
     while (!stack.empty()) {
